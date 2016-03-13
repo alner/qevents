@@ -1,17 +1,21 @@
-var
-  path = require('path'),
-  webpack = require('webpack'),
-  HtmlWebpackPlugin = require('html-webpack-plugin')
+var path = require('path'),
+    webpack = require('webpack'),
+    HtmlWebpackPlugin = require('html-webpack-plugin')
 
 var config = {
   context: __dirname,
   devtool: "eval-source-map",
   entry: {
-    client: "./client"
+    client: "./app/client"
   },
   output: {
     path: "./public",
-    filename: "[name].bundle.js"
+    filename: "[name].[hash].js"
+  },
+  resolve: {
+    alias: {
+      components: path.join(__dirname, "app", "components")
+    }
   },
   module: {
     loaders: [
@@ -27,7 +31,7 @@ var config = {
     ]
   },
   postcss: [
-    require('autoprefixer')
+    require("autoprefixer")
   ],
   plugins: [
     new HtmlWebpackPlugin({
@@ -51,6 +55,10 @@ if (process.env.NODE_ENV === 'production') {
     new webpack.optimize.UglifyJsPlugin({comments: false}),
     new webpack.DefinePlugin({
       'process.env': {NODE_ENV: JSON.stringify('production')}
+    }),
+    new HtmlWebpackPlugin({
+      template: path.resolve(__dirname, "app", "index.tmpl.html"),
+      filename: path.join(".", "views", "index.hbs") // see config output path
     })
   ];
 };
