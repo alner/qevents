@@ -6,7 +6,7 @@
   "scripts": {
     "start": "node_modules/.bin/webpack-dev-server --progress",
     "server": "node ./babel.server",
-    "build": "rimraf public && NODE_ENV=production node_modules/.bin/webpack -p --progress --colors"
+    "build": "rimraf dist && NODE_ENV=production node_modules/.bin/webpack -p --progress --colors"
   },
   "keywords": [],
   "author": "",

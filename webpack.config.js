@@ -2,19 +2,28 @@ var path = require('path'),
     webpack = require('webpack'),
     HtmlWebpackPlugin = require('html-webpack-plugin')
 
+var PATH = {
+  DIST: "./dist",
+  COMPONENTS: path.join(__dirname, "src", "components"),
+  TEMPLATES: {
+    INDEX: path.resolve(__dirname, "src", "templates", "index.tmpl.html")
+  }
+}
+
 var config = {
   context: __dirname,
   devtool: "eval-source-map",
   entry: {
-    client: "./app/client"
+    client: "./src/client"
   },
   output: {
-    path: "./public",
+    path: PATH.DIST,
     filename: "[name].[hash].js"
   },
   resolve: {
+    extensions: ['', '.js', '.jsx'],
     alias: {
-      components: path.join(__dirname, "app", "components")
+      components: PATH.COMPONENTS
     }
   },
   module: {
@@ -35,12 +44,13 @@ var config = {
   ],
   plugins: [
     new HtmlWebpackPlugin({
-      template: path.resolve(__dirname, "app", "index.tmpl.html")
+      template: PATH.TEMPLATES.INDEX,
+      RootContent: ''
     }),
     new webpack.HotModuleReplacementPlugin()
   ],
   devServer: {
-    contentBase: "./public",
+    contentBase: PATH.DIST,
     colors: true,
     historyApiFallback: true,
     inline: true,
@@ -57,8 +67,9 @@ if (process.env.NODE_ENV === 'production') {
       'process.env': {NODE_ENV: JSON.stringify('production')}
     }),
     new HtmlWebpackPlugin({
-      template: path.resolve(__dirname, "app", "index.tmpl.html"),
-      filename: path.join(".", "views", "index.hbs") // see config output path
+      template: PATH.TEMPLATES.INDEX,
+      filename: path.join(".", "views", "index.hbs"), // see config output path
+      RootContent: '{{{root}}}' // for server-side rendering
     })
   ];
 };
