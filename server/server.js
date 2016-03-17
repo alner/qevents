@@ -1,6 +1,7 @@
 import express from 'express'
 import hbs from 'express-handlebars'
-import iso from './iso'
+import path from 'path'
+import serverApp from './server.app'
 
 const app = express()
 
@@ -10,16 +11,15 @@ app.engine('hbs', hbs({
   extname: 'hbs'
 }));
 app.set('view engine', 'hbs');
+app.set('views', './public/views/');
 
-if (process.env.NODE_ENV === 'production') {
-  app.set('views', './dist/views/');
-}
+app.use(express.static(path.resolve(__dirname, '../public')));
 
 // loading the iso-middleware
-app.use(iso);
+app.use(serverApp);
 
-app.get('/', (request, response) => {
-  response.end('Hello express!')
-})
+// app.get('/', (request, response) => {
+//   response.end('Hello express!')
+// })
 
 app.listen(3000, () => console.log('http://localhost:3000'))
