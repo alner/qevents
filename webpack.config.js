@@ -1,4 +1,5 @@
 var path = require('path'),
+    fs = require('fs'),
     webpack = require('webpack'),
     HtmlWebpackPlugin = require('html-webpack-plugin'),
     ExtractTextPlugin = require('extract-text-webpack-plugin')
@@ -83,7 +84,9 @@ var serverConfig = {
     //   "src", "node_modules"
     // ]
   },
-  externals: [
+  externals: fs.readdirSync('node_modules').filter(x => x !== '.bin'),
+  /*
+  [
     function filter(context, request, cb) {
       const isExternal =
         request.match(/^[@a-z][a-z\/\.\-0-9]*$/i)
@@ -98,7 +101,7 @@ var serverConfig = {
         //!context.match(/[\\/]react-router/);
       cb(null, Boolean(isExternal));
     },
-  ],
+  ],*/
   module: {
     loaders: [
       {
@@ -116,7 +119,7 @@ var serverConfig = {
         test: /\.css$/,
         loaders: [
           "isomorphic-style-loader",
-          "css"          
+          "css"
         ]
       }
     ]

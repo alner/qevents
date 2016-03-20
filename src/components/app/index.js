@@ -7,9 +7,13 @@ class App extends Component {
     hello: PropTypes.string
   }
 
+  static defaultProps = {
+    hello: "Hello world!"
+  }
+
   render() {
     return (
-      <div className={styles.root}>{this.props.hello  || "Hello world!"}</div>
+      <div className={styles.root}>{this.props.hello}</div>
     )
   }
 }
