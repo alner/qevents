@@ -4,6 +4,7 @@ import webpack from 'webpack'
 import HtmlWebpackPlugin from 'html-webpack-plugin'
 import ExtractTextPlugin from 'extract-text-webpack-plugin'
 import { BASE_PATH, SRC_PATH, SERVER_PATH, COMPONENTS_PATH } from './base'
+import { BABEL_LOADER, JSON_LOADER, ISO_STYLE_LOADER } from './base'
 
 let config = {
   context: BASE_PATH,
@@ -25,27 +26,13 @@ let config = {
   externals: fs.readdirSync('node_modules').filter(x => x !== '.bin'),
   module: {
     loaders: [
-      {
-        test: /\.jsx?$/,
-        include: [
-          SRC_PATH
-        ],
-        loader: "babel"
-      },
-      {
-        test: /\.json$/,
-        loader: "json"
-      },
-      {
-        test: /\.css$/,
-        loaders: [
-          "isomorphic-style-loader",
-          "css"
-        ]
-      }
+      BABEL_LOADER,
+      JSON_LOADER,
+      ISO_STYLE_LOADER
     ]
   },
   plugins: [
+    new webpack.NoErrorsPlugin(),
     new ExtractTextPlugin('[name].css'),
     new webpack.DefinePlugin({'process.env.BROWSER': false }),
    // Define free variables

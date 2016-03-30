@@ -3,6 +3,7 @@ import webpack from 'webpack'
 import HtmlWebpackPlugin from 'html-webpack-plugin'
 import ExtractTextPlugin from 'extract-text-webpack-plugin'
 import { BASE_PATH, PUBLIC_PATH, COMPONENTS_PATH, TEMPLATES_PATH } from './base'
+import { BABEL_LOADER, STYLE_LOADER } from './base'
 
 let config = {
   context: BASE_PATH,
@@ -10,6 +11,7 @@ let config = {
   name: 'client',
   devtool: "eval-source-map",
   entry: {
+    vendor: ["react", "react-dom", "react-router"],
     client: "./src/client"
   },
   output: {
@@ -24,21 +26,19 @@ let config = {
   },
   module: {
     loaders: [
-      {
-        test: /\.jsx?$/,
-        exclude: /node_modules/,
-        loader: "babel"
-      },
-      {
-        test: /\.css$/,
-        loader: "style!css?modules!postcss"
-      }
+      BABEL_LOADER,
+      STYLE_LOADER
     ]
   },
   postcss: [
     require("autoprefixer")
   ],
   plugins: [
+    new webpack.NoErrorsPlugin(),
+    new webpack.optimize.CommonsChunkPlugin({
+      name: "vendor",
+      filename: "vendor.js"
+    }),
     new HtmlWebpackPlugin({
       template: TEMPLATES_PATH.INDEX,
       RootContent: ''
@@ -58,6 +58,11 @@ if (process.env.NODE_ENV === 'production') {
   // client config
   config.devtool = false;
   config.plugins = [
+    new webpack.NoErrorsPlugin(),
+    new webpack.optimize.CommonsChunkPlugin({
+      name: "vendor",
+      filename: "vendor.js"
+    }),
     new webpack.optimize.OccurenceOrderPlugin(),
     new webpack.optimize.UglifyJsPlugin({comments: false}),
     new webpack.DefinePlugin({
