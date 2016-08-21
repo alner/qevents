@@ -16,7 +16,9 @@ export const BASE_PATH = path.resolve(__dirname, '..')
 export const SRC_PATH = path.join(BASE_PATH, "src")
 export const SERVER_PATH = "./server"
 export const PUBLIC_PATH = path.join(BASE_PATH, "public")
-export const COMPONENTS_PATH =  path.join(SRC_PATH, "components")
+export const COMPONENTS_PATH = path.join(SRC_PATH, "components")
+export const CONTAINERS_PATH = path.join(SRC_PATH, "containers")
+export const ACTIONS_PATH = path.join(SRC_PATH, "actions")
 export const TEMPLATES_PATH = {
   INDEX: path.join(SRC_PATH, "templates", "index.tmpl.html")
 }

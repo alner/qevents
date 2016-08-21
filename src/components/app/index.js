@@ -8,12 +8,12 @@ class App extends Component {
   }
 
   static defaultProps = {
-    hello: "Hello world!"
+    data: "Home page"
   }
 
   render() {
     return (
-      <div className={styles.root}>{this.props.hello}</div>
+      <div className={styles.root}>{this.props.data}</div>
     )
   }
 }

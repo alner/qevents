@@ -2,7 +2,8 @@ import path from 'path'
 import webpack from 'webpack'
 import HtmlWebpackPlugin from 'html-webpack-plugin'
 import ExtractTextPlugin from 'extract-text-webpack-plugin'
-import { BASE_PATH, PUBLIC_PATH, COMPONENTS_PATH, TEMPLATES_PATH } from './base'
+import { BASE_PATH, PUBLIC_PATH, COMPONENTS_PATH, CONTAINERS_PATH,
+  ACTIONS_PATH, TEMPLATES_PATH } from './base'
 import { BABEL_LOADER, STYLE_LOADER } from './base'
 
 let config = {
@@ -21,7 +22,9 @@ let config = {
   resolve: {
     extensions: ['', '.js', '.jsx'],
     alias: {
-      components: COMPONENTS_PATH
+      components: COMPONENTS_PATH,
+      containers: CONTAINERS_PATH,
+      actions: ACTIONS_PATH
     }
   },
   module: {

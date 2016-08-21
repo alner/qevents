@@ -14,6 +14,7 @@ export default class Layout extends Component {
         <nav>
           <ul>
             <li><Link to="/">Home</Link></li>
+            <li><Link to="/hello/world!">Hello</Link></li>
           </ul>
         </nav>
         { this.props.children }
