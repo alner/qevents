@@ -1,0 +1,2 @@
+export const SET_KEYWORD = 'SET_KEYWORD'
+export const PHRASE_FETCHED = 'PHRASE_FETCHED'

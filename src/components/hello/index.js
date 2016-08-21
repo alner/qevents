@@ -1,21 +1,21 @@
 import React, { Component } from 'react'
 
 export default class PhraseComponent extends Component {
-  onChangePhrase(e) {
+  onChangeWord(e) {
     console.log(e)
     //e.preventDefault()
-    this.props.setPhrase(this.input.value);
+    this.props.setKeyword(this.input.value);
   }
   render(){
     console.log(this.props)
     return (
       <div>
-        {this.props.phrase}
+        {this.props.word}
         <input
          type="text"
          ref={(input) => this.input = input }
          onChange={this.
-          onChangePhrase.bind(this)} />
+          onChangeWord.bind(this)} />
       </div>
     )
   }

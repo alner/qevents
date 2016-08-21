@@ -3,6 +3,6 @@ import { routerReducer } from 'react-router-redux';
 import phraseReducer from './phrase'
 
 export default combineReducers({
-    phrase: phraseReducer,
+    word: phraseReducer,
     routing: routerReducer
 })

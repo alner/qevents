@@ -5,7 +5,7 @@ import * as actions from 'actions/index'
 
 function mapStoreStateToProps(state) {
   return {
-    phrase: state.phrase
+    word: state.word
   }
 }
 
