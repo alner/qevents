@@ -3,18 +3,12 @@ todo
 * production development configuratin?
 * make webpack folder (split configuration: base, client.development, client.production, server, use ES6 syntax). see https://github.com/cdebotton/react-universal
 
+react (react develope tools)
 react-router
-redux
+redux (redux-devtools)
 react-redux
-react-router-redux
-
-
-1. react-router
-
-```
-npm i react-router --save
-```
-
-```
-import { Router, Route, IndexRoute, browserHistory } from 'react-router'
-```
+redux-thunk
+redux-promise
+react-router-redux (or redux-router)
+flow
+env module ?

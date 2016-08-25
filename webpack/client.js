@@ -4,7 +4,7 @@ import HtmlWebpackPlugin from 'html-webpack-plugin'
 import ExtractTextPlugin from 'extract-text-webpack-plugin'
 import { BASE_PATH, PUBLIC_PATH, COMPONENTS_PATH, CONTAINERS_PATH,
   ACTIONS_PATH, TEMPLATES_PATH } from './base'
-import { BABEL_LOADER, STYLE_LOADER } from './base'
+import { BABEL_LOADER, STYLE_LOADER, JSON_LOADER } from './base'
 
 let config = {
   context: BASE_PATH,
@@ -30,7 +30,8 @@ let config = {
   module: {
     loaders: [
       BABEL_LOADER,
-      STYLE_LOADER
+      STYLE_LOADER,
+      JSON_LOADER
     ]
   },
   postcss: [

@@ -34,6 +34,9 @@ export const BABEL_LOADER = {
 
 export const JSON_LOADER = {
   test: /\.json$/,
+  include: [
+    SRC_PATH
+  ],
   loader: "json"
 }
 
