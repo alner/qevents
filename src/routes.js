@@ -7,6 +7,7 @@ import App from 'components/app'
 import Layout from 'components/layout'
 import Hello from 'containers/hello'
 import Weather from 'containers/weather'
+import WeatherApp from 'containers/weatherApp'
 
 // Store
 import store, { history } from './store'
@@ -21,7 +22,10 @@ export default (
       <Route path="/" component={Layout}>
         <IndexRoute component={App} />
         <Route path="/hello/:phrase" component={Hello} />
-        <Route path="/weather/:city" component={Weather} />
+        <Route path="/weather" component={WeatherApp}>
+          <IndexRoute component={WeatherApp} />
+          <Route path="/weather/:city" component={Weather} />
+        </Route>
       </Route>
     </Router>
   </Provider>

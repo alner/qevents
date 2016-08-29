@@ -11,14 +11,23 @@ export function setKeyword(word) {
 
 export function fetchWeatherForCity(city) {
   return dispatch => {
+    dispatch(weatherFetching(city))
     api.getWeatherByCity(city)
-      .then(data => dispatch(weatherFetched(data)))
+      .then(data => dispatch(weatherFetched(data, city)))
   }
 }
 
-export function weatherFetched(data) {
+function weatherFetching(place) {
+  return {
+    type: constants.WEATHER_FETCHING,
+    place
+  }
+}
+
+function weatherFetched(data, place) {
   return {
     type: constants.WEATHER_FETCHED,
+    place,
     data
   }
 }
