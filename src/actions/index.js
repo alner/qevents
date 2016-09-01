@@ -9,6 +9,13 @@ export function setKeyword(word) {
   }
 }
 
+export function weatherSetState(state) {
+  return {
+    type: constants.WEATHER_SET_STATE,
+    state
+  }
+}
+
 export function fetchWeatherForCity(city) {
   return dispatch => {
     dispatch(weatherFetching(city))

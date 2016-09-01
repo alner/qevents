@@ -11,10 +11,28 @@ import WeatherApp from 'containers/weatherApp'
 
 // Store
 import store, { history } from './store'
+import * as actions from './actions'
 
 // Test
 // import { getWeatherByCity } from './api'
 // getWeatherByCity('London').then(data => console.log(data))
+
+// TODO: load data from store...
+const DEFAULT_STATE = {
+  items: [
+    {
+      place: 'Barcelona'
+    },
+    {
+      place: 'Kiev'
+    },
+    {
+      place: 'Istanbul'
+    }
+  ]
+};
+
+store.dispatch(actions.weatherSetState(DEFAULT_STATE))
 
 export default (
   <Provider store={store}>

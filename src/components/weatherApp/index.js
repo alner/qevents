@@ -3,14 +3,16 @@ import * as styles from './style.css'
 import WeatherItem from './weatherItem'
 
 export default (props) => {
-  console.log(props.items)
+  console.log(props)
   return (
     <div className={styles.weatherApp}>
       {/*props.children*/}
       <ul>
-      {props.items.map((item) => {
+      {props.items && props.items.map((item) => {
         console.log(item)
-        return (<WeatherItem key={item.place} {...item} />)
+        return (<WeatherItem key={item.place}
+          {...item}
+          fetchWeatherForCity={props.fetchWeatherForCity} />)
       })}
       </ul>
     </div>
