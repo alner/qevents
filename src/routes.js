@@ -10,14 +10,14 @@ import Weather from 'containers/weather'
 import WeatherApp from 'containers/weatherApp'
 
 // Store
-import store, { history } from './store'
-import * as actions from './actions'
+import configureStore from './store'
 
 // Test
 // import { getWeatherByCity } from './api'
 // getWeatherByCity('London').then(data => console.log(data))
 
 // TODO: load data from store...
+// TODO universal app: const defaultState = window.__INIT_STATE__
 const DEFAULT_STATE = {
   items: [
     {
@@ -32,7 +32,7 @@ const DEFAULT_STATE = {
   ]
 };
 
-store.dispatch(actions.weatherSetState(DEFAULT_STATE))
+const { store, history } = configureStore(DEFAULT_STATE)
 
 export default (
   <Provider store={store}>
