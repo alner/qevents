@@ -2,11 +2,11 @@ import React from 'react'
 import { Route, IndexRoute, browserHistory } from 'react-router'
 
 // Components:
-import App from 'components/app'
-import Layout from 'components/layout'
-import Hello from 'containers/hello'
-import Weather from 'containers/weather'
-import WeatherApp from 'containers/weatherApp'
+import App from './components/app'
+import Layout from './components/layout'
+import Hello from './containers/hello'
+import Weather from './containers/weather'
+import WeatherApp from './containers/weatherApp'
 
 // Test
 // import { getWeatherByCity } from './api'

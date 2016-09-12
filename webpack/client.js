@@ -63,15 +63,16 @@ if (process.env.NODE_ENV === 'production') {
   config.devtool = false;
   config.plugins = [
     new webpack.NoErrorsPlugin(),
+    new webpack.DefinePlugin({
+      'process.env': {NODE_ENV: JSON.stringify('production')}
+    }),
     new webpack.optimize.CommonsChunkPlugin({
       name: "vendor",
       filename: "vendor.js"
     }),
+    new webpack.optimize.DedupePlugin(),
     new webpack.optimize.OccurenceOrderPlugin(),
     new webpack.optimize.UglifyJsPlugin({comments: false}),
-    new webpack.DefinePlugin({
-      'process.env': {NODE_ENV: JSON.stringify('production')}
-    }),
     new HtmlWebpackPlugin({
       template: TEMPLATES_PATH.INDEX,
       filename: path.join(".", "views", "index.hbs"), // see config output path

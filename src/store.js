@@ -18,6 +18,7 @@ function configureStore(defaultState) {
   const store = createStore(rootReducer, {}, enhancers)
   const history = syncHistoryWithStore(browserHistory, store)
 
+  // init state
   store.dispatch(actions.weatherSetState(defaultState))
 
   return {

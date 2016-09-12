@@ -12,6 +12,7 @@ redux-thunk
 redux-promise
 redux-logger
 redux-saga
+redux-logic ?
 react-router-redux (or redux-router)
 flow
 
