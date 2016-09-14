@@ -6,6 +6,15 @@ import { BASE_PATH, PUBLIC_PATH, COMPONENTS_PATH, CONTAINERS_PATH,
   ACTIONS_PATH, TEMPLATES_PATH } from './base'
 import { BABEL_LOADER, STYLE_LOADER, JSON_LOADER } from './base'
 
+let client_app = ['./src/client']
+if (process.env.NODE_ENV !== 'production') {
+  client_app.unshift(
+    'webpack-hot-middleware/client',
+    'webpack/hot/only-dev-server',
+    'react-hot-loader/patch'
+  )
+}
+
 let config = {
   context: BASE_PATH,
   target: 'web',
@@ -13,7 +22,7 @@ let config = {
   devtool: "eval-source-map",
   entry: {
     vendor: ["react", "react-dom", "react-router"],
-    client: "./src/client"
+    client: client_app
   },
   output: {
     path: PUBLIC_PATH,

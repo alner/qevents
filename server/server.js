@@ -2,7 +2,7 @@ import express from 'express'
 import hbs from 'express-handlebars'
 import path from 'path'
 import config from './config.json'
-import serverApp from './server.app'
+//import serverApp from './server.app'
 
 // Webpack Requirements
 import webpack from 'webpack'
@@ -20,7 +20,7 @@ if (process.env.NODE_ENV === 'development') {
       headers: { 'Access-Control-Allow-Origin': '*' },
       historyApiFallback: true,
       hot: true,
-      noInfo: false,
+      noInfo: true,
       publicPath: webpackConfig.output.publicPath,
       // proxy: {
       //   '*': 'http://' + host + ':' + appPort
@@ -41,12 +41,14 @@ app.use(express.static(path.resolve(__dirname, '../public')));
 
 // loading the app-middleware
 //app.use(require('./server.app'));
-app.use(serverApp);
 // if(process.env.NODE_ENV === 'production') {
 //   app.use(require('./server.app'));
 // } else {
 //   app.use(require('../src/server'));
 // }
+
+//app.use(serverApp);
+app.use(require('../src/server').default);
 
 // app.get('/', (request, response) => {
 //   response.end('Hello express!')

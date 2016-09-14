@@ -1,7 +1,7 @@
 import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
-import Weather from 'components/weather'
-import * as actions from 'actions/index'
+import Weather from '../components/weather'
+import * as actions from '../actions/index'
 
 function mapStoreStateToProps(state) {
   return {

@@ -1,7 +1,7 @@
 import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
-import Hello from 'components/hello'
-import * as actions from 'actions/index'
+import Hello from '../components/hello'
+import * as actions from '../actions/index'
 
 function mapStoreStateToProps(state) {
   return {

@@ -1,5 +1,5 @@
 import React, { Component, PropTypes } from 'react'
-import styles from './style.css'
+//import styles from './style.css'
 
 class App extends Component {
 
@@ -11,9 +11,10 @@ class App extends Component {
     data: "Home page"
   }
 
+  // className={styles.root}
   render() {
     return (
-      <div className={styles.root}>{this.props.data}</div>
+      <div>{this.props.data}</div>
     )
   }
 }
